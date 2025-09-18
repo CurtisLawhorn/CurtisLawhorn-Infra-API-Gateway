@@ -1,2 +1,2 @@
-# CurtisLawhorn-Infra-API-Gateway
+# CurtisLawhorn Gateway
 AWS REST API gateway infrastructure as code.

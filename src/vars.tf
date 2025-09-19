@@ -119,7 +119,7 @@ variable "app_runner_datastream_name" {
 
 variable "app_runner_image_arn" {
   type    = string
-  default = "689502032294.dkr.ecr.us-east-2.amazonaws.com/llchefe/recipe-services:da398830a402f0a7afc37c70f4d6a321415d1028"
+  default = "689502032294.dkr.ecr.us-east-2.amazonaws.com/llchefe/recipe-services:latest"
 }
 
 variable "app_runner_access_role_arn" {

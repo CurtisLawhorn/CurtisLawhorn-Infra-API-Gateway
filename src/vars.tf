@@ -112,14 +112,19 @@ variable "app_runner_name" {
   default = "curtislawhorn-weather-services"
 }
 
+variable "app_runner_cognito_userpoolid" {
+  type    = string
+  default = "us-east-2_DHhagrvR2"
+}
+
 variable "app_runner_datastream_name" {
   type    = string
-  default = "curtislawhorn-WeatherServices-stream"
+  default = "CurtisLawhorn-WeatherServices-stream"
 }
 
 variable "app_runner_image_arn" {
   type    = string
-  default = "689502032294.dkr.ecr.us-east-2.amazonaws.com/llchefe/recipe-services:latest"
+  default = "689502032294.dkr.ecr.us-east-2.amazonaws.com/leakycauldron/recipe-services:583ba34b8ee8f5de9b3717f2a45c4ae51a5aae2d"
 }
 
 variable "app_runner_access_role_arn" {

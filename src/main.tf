@@ -193,6 +193,7 @@ resource "aws_apprunner_service" "apprunner" {
         port = "8080"
         runtime_environment_variables = {
           ASPNETCORE_ENVIRONMENT                          = "Production"
+          AWS__CognitoConfiguration__UserPoolId           = var.app_runner_cognito_userpoolid
           AWS__ApiDataStreamingConfiguration__StreamName  = var.app_runner_datastream_name
           Logging__LogLevel__Default                      = "Information"
           "Logging__LogLevel__Microsoft.AspNetCore"       = "Warning"
@@ -200,7 +201,7 @@ resource "aws_apprunner_service" "apprunner" {
         runtime_environment_secrets = {}
       }
     }
-    auto_deployments_enabled = false
+    auto_deployments_enabled = true
     authentication_configuration {
       access_role_arn = var.app_runner_access_role_arn
     }

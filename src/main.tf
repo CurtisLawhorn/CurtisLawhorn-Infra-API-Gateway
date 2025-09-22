@@ -2,10 +2,7 @@
 # Networking setup for running private App Runners publicly via REST API Gateways via custom domain
 ###############################################
 
-provider "aws" {
-  profile = var.aws_profile
-  region  = var.aws_region
-}
+provider "aws" {}
 
 data "aws_availability_zones" "available" {}
 

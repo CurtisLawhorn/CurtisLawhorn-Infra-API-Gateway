@@ -3,17 +3,17 @@
 ###############################################
 
 provider "aws" {
-    profile = var.aws_profile
-    region  = var.aws_region
+  profile = var.aws_profile
+  region  = var.aws_region
 }
 
 data "aws_availability_zones" "available" {}
 
 # VPC
 resource "aws_vpc" "my_vpc" {
-  cidr_block = var.vpc_cidr_block
-  enable_dns_support    = false
-  enable_dns_hostnames  = false
+  cidr_block           = var.vpc_cidr_block
+  enable_dns_support   = false
+  enable_dns_hostnames = false
   tags = {
     Name    = var.vpc_name
     AppName = var.application_name
@@ -101,11 +101,11 @@ output "my_vpc_endpoint_ips" {
 
 # Network load Balancer
 resource "aws_lb" "my_ec2_nlb" {
-  name                = var.nlb_name
-  internal            = true
-  load_balancer_type  = "network"
-  ip_address_type     = "ipv4"
-  subnets             = aws_subnet.my_vpc_private_subnet[*].id
+  name                       = var.nlb_name
+  internal                   = true
+  load_balancer_type         = "network"
+  ip_address_type            = "ipv4"
+  subnets                    = aws_subnet.my_vpc_private_subnet[*].id
   enable_deletion_protection = false
   tags = {
     Name    = var.nlb_name
@@ -115,11 +115,11 @@ resource "aws_lb" "my_ec2_nlb" {
 
 # Target Group
 resource "aws_lb_target_group" "my_ec2_tg" {
-  name        = var.target_group_name
-  port        = 443
-  protocol    = "TCP"
-  target_type = "ip"
-  vpc_id      = aws_vpc.my_vpc.id
+  name            = var.target_group_name
+  port            = 443
+  protocol        = "TCP"
+  target_type     = "ip"
+  vpc_id          = aws_vpc.my_vpc.id
   ip_address_type = "ipv4"
   health_check {
     protocol            = "TCP"
@@ -137,12 +137,12 @@ resource "aws_lb_target_group" "my_ec2_tg" {
 
 # Network load Balancer - Listener
 resource "aws_lb_listener" "my_ec2_nlb_listener" {
-  load_balancer_arn   = aws_lb.my_ec2_nlb.arn
-  port                = 443
-  protocol            = "TCP"
+  load_balancer_arn = aws_lb.my_ec2_nlb.arn
+  port              = 443
+  protocol          = "TCP"
   default_action {
-    type              = "forward"
-    target_group_arn  = aws_lb_target_group.my_ec2_tg.arn
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.my_ec2_tg.arn
   }
 }
 

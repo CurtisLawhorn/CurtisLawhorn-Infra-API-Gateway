@@ -93,19 +93,23 @@ variable "vpc_link_name" {
   default = "curtislawhorn-apprunner-vpc-link"
 }
 
+variable "app_runner_vpc_connector_name" {
+  type    = string
+  default = "curtislawhorn-apprunner-connector"
+}
+
+###############################################
+# API Gateway
+###############################################
+
 variable "api_gateway_name" {
   type    = string
-  default = "curtislawhorn-api"
+  default = "curtislawhorn-weatherservices-api"
 }
 
 ###############################################
 # App Runner
 ###############################################
-
-variable "app_runner_vpc_connector_name" {
-  type    = string
-  default = "curtislawhorn-apprunner-connector"
-}
 
 variable "app_runner_name" {
   type    = string
@@ -119,7 +123,7 @@ variable "app_runner_cognito_userpoolid" {
 
 variable "app_runner_datastream_name" {
   type    = string
-  default = "CurtisLawhorn-WeatherServices-stream"
+  default = "curtislawhorn-weatherservices-stream"
 }
 
 variable "app_runner_image_arn" {
@@ -139,7 +143,7 @@ variable "app_runner_instance_role_arn" {
 
 variable "app_runner_ingress_name" {
   type    = string
-  default = "curtislawhorn-apprunner-ingress"
+  default = "curtislawhorn-weatherservices-ingress"
 }
 
 variable "api_gateway_app_runner_base_path" {

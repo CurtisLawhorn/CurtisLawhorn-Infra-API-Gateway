@@ -1,2 +1,2 @@
-# Curtis Lawhorn API Gateway
-AWS REST API gateway infrastructure as code.
+# Curtis Lawhorn Network
+Network infrastructure setup.

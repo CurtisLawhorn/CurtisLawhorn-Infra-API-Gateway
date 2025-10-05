@@ -168,7 +168,7 @@ resource "aws_api_gateway_vpc_link" "my_api_vpc_link" {
 # App Runner VPC connector
 resource "aws_apprunner_vpc_connector" "my_apprunner_vpc_connector" {
   vpc_connector_name = var.app_runner_vpc_connector_name
-  subnets            = ßaws_subnet.my_vpc_private_subnet[*].id
+  subnets            = aws_subnet.my_vpc_private_subnet[*].id
   security_groups    = [aws_default_security_group.my_vpc_sg.id]
   tags = {
     Name    = var.app_runner_vpc_connector_name

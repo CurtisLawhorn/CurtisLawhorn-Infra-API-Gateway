@@ -13,7 +13,7 @@ resource "aws_vpc" "my_vpc" {
   enable_dns_hostnames = false
   tags = {
     Name    = var.vpc_name
-    AppName = var.application_name
+    Project = var.project_name
   }
 }
 
@@ -43,7 +43,7 @@ resource "aws_default_security_group" "my_vpc_sg" {
   }
   tags = {
     Name    = var.security_group_name
-    AppName = var.application_name
+    Project = var.project_name
   }
 }
 
@@ -55,7 +55,7 @@ resource "aws_subnet" "my_vpc_public_subnet" {
   availability_zone = data.aws_availability_zones.available.names[count.index]
   tags = {
     Name    = var.public_subnet_names[count.index]
-    AppName = var.application_name
+    Project = var.project_name
   }
 }
 
@@ -66,7 +66,7 @@ resource "aws_subnet" "my_vpc_private_subnet" {
   availability_zone = data.aws_availability_zones.available.names[count.index]
   tags = {
     Name    = var.private_subnet_names[count.index]
-    AppName = var.application_name
+    Project = var.project_name
   }
 }
 
@@ -80,7 +80,7 @@ resource "aws_vpc_endpoint" "my_vpc_endpoint" {
   private_dns_enabled = false
   tags = {
     Name    = var.vpc_endpoint_name
-    AppName = var.application_name
+    Project = var.project_name
   }
 }
 
@@ -106,7 +106,7 @@ resource "aws_lb" "my_ec2_nlb" {
   enable_deletion_protection = false
   tags = {
     Name    = var.nlb_name
-    AppName = var.application_name
+    Project = var.project_name
   }
 }
 
@@ -128,7 +128,7 @@ resource "aws_lb_target_group" "my_ec2_tg" {
   }
   tags = {
     Name    = var.target_group_name
-    AppName = var.application_name
+    Project = var.project_name
   }
 }
 
@@ -168,10 +168,10 @@ resource "aws_api_gateway_vpc_link" "my_api_vpc_link" {
 # App Runner VPC connector
 resource "aws_apprunner_vpc_connector" "my_apprunner_vpc_connector" {
   vpc_connector_name = var.app_runner_vpc_connector_name
-  subnets            = aws_subnet.my_vpc_private_subnet[*].id
+  subnets            = ßaws_subnet.my_vpc_private_subnet[*].id
   security_groups    = [aws_default_security_group.my_vpc_sg.id]
   tags = {
     Name    = var.app_runner_vpc_connector_name
-    AppName = var.application_name
+    Project = var.project_name
   }
 }

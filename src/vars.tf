@@ -2,7 +2,7 @@
 # Environment
 ###############################################
 
-variable "application_name" {
+variable "project_name" {
   type    = string
   default = "Curtis Lawhorn"
 }
